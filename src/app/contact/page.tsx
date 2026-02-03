@@ -67,13 +67,13 @@ export default function ContactPage() {
 
             <main>
                 {/* Hero Section */}
-                <section className="min-vh-50 d-flex align-items-center position-relative" style={{ background: 'var(--gradient-hero)', paddingTop: '100px', paddingBottom: '80px' }}>
+                <section className="min-vh-50 d-flex align-items-center position-relative" style={{ background: 'var(--gradient-hero)', paddingTop: '120px', paddingBottom: '80px' }}>
                     <div className="container">
                         <div className="text-center">
-                            <h1 className="display-3 fw-bold mb-4">
+                            <h1 className="display-4 display-md-3 fw-bold mb-4">
                                 Get in <span className="text-gradient-primary">Touch</span>
                             </h1>
-                            <p className="lead" style={{ color: 'var(--text-gray)', maxWidth: '700px', margin: '0 auto' }}>
+                            <p className="lead text-gray-responsive" style={{ maxWidth: '700px', margin: '0 auto' }}>
                                 Have a question or want to discuss your project? We'd love to hear from you!
                             </p>
                         </div>
@@ -168,20 +168,20 @@ export default function ContactPage() {
 
                                 <div className="mt-4">
                                     <h5 className="mb-3">Follow Us</h5>
-                                    <div className="d-flex gap-3">
-                                        <a href={contactInfo.social.facebook} className="btn btn-outline-custom">
+                                    <div className="d-flex flex-wrap gap-3">
+                                        <a href={contactInfo.social.facebook} className="btn btn-outline-custom p-2" title="Facebook">
                                             <i className="ri-facebook-fill"></i>
                                         </a>
-                                        <a href={contactInfo.social.twitter} className="btn btn-outline-custom">
+                                        <a href={contactInfo.social.twitter} className="btn btn-outline-custom p-2" title="Twitter">
                                             <i className="ri-twitter-x-line"></i>
                                         </a>
-                                        <a href={contactInfo.social.linkedin} className="btn btn-outline-custom">
+                                        <a href={contactInfo.social.linkedin} className="btn btn-outline-custom p-2" title="LinkedIn">
                                             <i className="ri-linkedin-fill"></i>
                                         </a>
-                                        <a href={contactInfo.social.github} className="btn btn-outline-custom">
+                                        <a href={contactInfo.social.github} className="btn btn-outline-custom p-2" title="GitHub">
                                             <i className="ri-github-fill"></i>
                                         </a>
-                                        <a href={contactInfo.social.instagram} className="btn btn-outline-custom">
+                                        <a href={contactInfo.social.instagram} className="btn btn-outline-custom p-2" title="Instagram">
                                             <i className="ri-instagram-line"></i>
                                         </a>
                                     </div>
@@ -300,7 +300,7 @@ export default function ContactPage() {
                 <section className="py-5" style={{ background: 'var(--dark-card)' }}>
                     <div className="container">
                         <div className="text-center mb-5">
-                            <h2 className="display-5 fw-bold mb-3">
+                            <h2 className="display-5 display-md-4 fw-bold mb-3">
                                 Frequently Asked <span className="text-gradient-primary">Questions</span>
                             </h2>
                         </div>

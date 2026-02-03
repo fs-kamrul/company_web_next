@@ -19,13 +19,13 @@ export default function Hero() {
             <div className="container position-relative">
                 <div className="row align-items-center">
                     <div className="col-lg-7 animate-fade-in-up">
-                        <h1 className="display-3 fw-bold mb-4">
+                        <h1 className="display-3 display-md-2 fw-bold mb-4">
                             Welcome to <span className="text-gradient-primary">kTechSolutions</span>
                         </h1>
-                        <p className="lead mb-4" style={{ color: 'var(--text-gray)', fontSize: '1.25rem' }}>
+                        <p className="lead mb-4 text-gray-responsive">
                             Empowering Education and Business with Cutting-Edge Technology Solutions
                         </p>
-                        <p className="fs-5 mb-5" style={{ color: 'var(--text-gray)' }}>
+                        <p className="fs-5 mb-5 text-gray-responsive">
                             We specialize in delivering innovative software solutions that transform how institutions and businesses operate.
                             From comprehensive school management to dynamic web platforms, we bring your digital vision to life.
                         </p>

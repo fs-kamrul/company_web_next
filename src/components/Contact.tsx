@@ -112,17 +112,17 @@ export default function Contact() {
                             </div>
                         </div>
 
-                        <div className="d-flex gap-3">
-                            <a href={contactInfo.social.facebook} className="btn btn-outline-custom">
+                        <div className="d-flex flex-wrap gap-3">
+                            <a href={contactInfo.social.facebook} className="btn btn-outline-custom p-2" title="Facebook">
                                 <i className="ri-facebook-fill"></i>
                             </a>
-                            <a href={contactInfo.social.twitter} className="btn btn-outline-custom">
+                            <a href={contactInfo.social.twitter} className="btn btn-outline-custom p-2" title="Twitter">
                                 <i className="ri-twitter-x-line"></i>
                             </a>
-                            <a href={contactInfo.social.linkedin} className="btn btn-outline-custom">
+                            <a href={contactInfo.social.linkedin} className="btn btn-outline-custom p-2" title="LinkedIn">
                                 <i className="ri-linkedin-fill"></i>
                             </a>
-                            <a href={contactInfo.social.github} className="btn btn-outline-custom">
+                            <a href={contactInfo.social.github} className="btn btn-outline-custom p-2" title="GitHub">
                                 <i className="ri-github-fill"></i>
                             </a>
                         </div>
