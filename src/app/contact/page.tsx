@@ -213,13 +213,11 @@ export default function ContactPage() {
                                                     onChange={handleChange}
                                                     required
                                                 >
-                                                    <option value="">Select a subject</option>
-                                                    <option value="school-management">School Management System</option>
-                                                    <option value="laravel-website">Laravel Dynamic Website</option>
-                                                    <option value="demo">Request a Demo</option>
-                                                    <option value="support">Technical Support</option>
-                                                    <option value="partnership">Partnership Inquiry</option>
-                                                    <option value="general">General Inquiry</option>
+                                                    {contactInfo.messageSubjects.map((subject, index) => (
+                                                        <option key={index} value={subject.value}>
+                                                            {subject.label}
+                                                        </option>
+                                                    ))}
                                                 </select>
                                             </div>
                                             <div className="col-md-12">

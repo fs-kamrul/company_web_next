@@ -8,5 +8,35 @@
         "linkedin": "#",
         "github": "#",
         "instagram": "#"
-    }
+    },
+    "messageSubjects": [
+        {
+            "value": "",
+            "label": "Select a subject"
+        },
+        {
+            "value": "school-management",
+            "label": "School Management System"
+        },
+        {
+            "value": "laravel-website",
+            "label": "Laravel Dynamic Website"
+        },
+        {
+            "value": "request-a-demo",
+            "label": "Request a Demo"
+        },
+        {
+            "value": "technical-support",
+            "label": "Technical Support"
+        },
+        {
+            "value": "partnership-inquiry",
+            "label": "Partnership Inquiry"
+        },
+        {
+            "value": "general-inquiry",
+            "label": "General Inquiry"
+        }
+    ]
 }

@@ -97,13 +97,24 @@ export default function Contact() {
                                         placeholder="john@example.com"
                                     />
                                 </div>
+                                <div className="md-3">
+                                    <label htmlFor="phone" className="form-label">Phone Number</label>
+                                    <input
+                                        type="tel"
+                                        className="form-control bg-dark-lighter border-0 text-white"
+                                        id="phone"
+                                        name="phone"
+                                        placeholder="+1 (234) 567-890"
+                                    />
+                                </div>
                                 <div className="mb-3">
                                     <label htmlFor="subject" className="form-label">Subject</label>
                                     <select className="form-select bg-dark-lighter border-0 text-white" id="subject">
-                                        <option>Select a product</option>
-                                        <option>School Management System</option>
-                                        <option>Laravel Dynamic Website</option>
-                                        <option>General Inquiry</option>
+                                        {contactInfo.messageSubjects.map((subject, index) => (
+                                            <option key={index} value={subject.value}>
+                                                {subject.label}
+                                            </option>
+                                        ))}
                                     </select>
                                 </div>
                                 <div className="mb-4">
