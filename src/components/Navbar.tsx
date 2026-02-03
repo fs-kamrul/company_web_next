@@ -18,9 +18,16 @@ export default function Navbar() {
     return (
         <nav className={`navbar navbar-expand-lg navbar-dark fixed-top ${scrolled ? 'shadow-lg' : ''}`}>
             <div className="container">
-                <Link href="/" className="navbar-brand">
-                    <i className="ri-code-s-slash-line me-2"></i>
-                    <span className="text-gradient-primary">kTech</span>Solutions
+                <Link href="/" className="navbar-brand d-flex align-items-center gap-2">
+                    <img
+                        src="/logo.png"
+                        alt="kTechSolutions Logo"
+                        height={50}
+                        className="d-inline-block align-text-top"
+                    />
+                    {/* <span>
+                        <span className="text-gradient-primary">kTech</span>Solutions
+                    </span> */}
                 </Link>
 
                 <button
