@@ -1,0 +1,21 @@
+{
+    "service": "gmail",
+    "recipient": "anik825@gmail.com",
+    "smtp": {
+        "host": "smtp.gmail.com",
+        "port": 587,
+        "secure": false,
+        "auth": {
+            "user": "your-email@gmail.com",
+            "pass": "your-app-password"
+        }
+    },
+    "from": {
+        "name": "Company Website",
+        "email": "noreply@yourcompany.com"
+    },
+    "emailTemplate": {
+        "subject": "New Contact Form Submission - {subject}",
+        "replyTo": "{email}"
+    }
+}

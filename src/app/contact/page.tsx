@@ -13,12 +13,45 @@ export default function ContactPage() {
         subject: '',
         message: ''
     });
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [notification, setNotification] = useState<{ type: 'success' | 'error', message: string } | null>(null);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        // Handle form submission here
-        console.log('Form submitted:', formData);
-        alert('Thank you for your message! We will get back to you soon.');
+        setIsSubmitting(true);
+        setNotification(null);
+
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                setNotification({ type: 'success', message: data.message || 'Message sent successfully!' });
+                // Clear form
+                setFormData({
+                    name: '',
+                    email: '',
+                    phone: '',
+                    subject: '',
+                    message: ''
+                });
+                // Scroll to notification
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                setNotification({ type: 'error', message: data.error || 'Failed to send message. Please try again.' });
+            }
+        } catch (error) {
+            setNotification({ type: 'error', message: 'Network error. Please check your connection and try again.' });
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -157,6 +190,13 @@ export default function ContactPage() {
 
                             {/* Contact Form */}
                             <div className="col-lg-7">
+                                {notification && (
+                                    <div className={`alert ${notification.type === 'success' ? 'alert-success' : 'alert-danger'} d-flex align-items-center mb-4`} role="alert">
+                                        <i className={`${notification.type === 'success' ? 'ri-checkbox-circle-line' : 'ri-error-warning-line'} me-2`} style={{ fontSize: '1.5rem' }}></i>
+                                        <div>{notification.message}</div>
+                                    </div>
+                                )}
+
                                 <div className="glass-card p-4 p-md-5">
                                     <h2 className="mb-4">Send Us a Message</h2>
                                     <p className="mb-4" style={{ color: 'var(--text-gray)' }}>
@@ -234,9 +274,18 @@ export default function ContactPage() {
                                                 ></textarea>
                                             </div>
                                             <div className="col-md-12">
-                                                <button type="submit" className="btn btn-primary-custom btn-lg w-100">
-                                                    <i className="ri-send-plane-fill me-2"></i>
-                                                    Send Message
+                                                <button type="submit" className="btn btn-primary-custom btn-lg w-100" disabled={isSubmitting}>
+                                                    {isSubmitting ? (
+                                                        <>
+                                                            <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                                                            Sending...
+                                                        </>
+                                                    ) : (
+                                                        <>
+                                                            <i className="ri-send-plane-fill me-2"></i>
+                                                            Send Message
+                                                        </>
+                                                    )}
                                                 </button>
                                             </div>
                                         </div>

@@ -1,0 +1,22 @@
+{
+    "messages": [
+        {
+            "name": "kamrul",
+            "email": "kamrul@gmail.com",
+            "phone": "0145747",
+            "subject": "technical-support",
+            "message": "sfgdf",
+            "timestamp": "2026-02-03T09:56:31.190Z",
+            "id": "msg_1770112591190_o0kr8ioax"
+        },
+        {
+            "name": "kamrul",
+            "email": "ssse@gmail.com",
+            "phone": "234542353",
+            "subject": "school-management",
+            "message": "Ready to transform your institution or business with our innovative solutions? Get in touch with us today and let's discuss how we can help you achieve your goals.",
+            "timestamp": "2026-02-03T09:59:00.702Z",
+            "id": "msg_1770112740702_zhn9ia0e6"
+        }
+    ]
+}

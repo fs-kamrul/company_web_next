@@ -1,9 +1,62 @@
 "use client";
 
-
+import { useState } from 'react';
 import contactInfo from '@/data/contact.json';
 
 export default function Contact() {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        phone: '',
+        subject: '',
+        message: ''
+    });
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [notification, setNotification] = useState<{ type: 'success' | 'error', message: string } | null>(null);
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        });
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        setNotification(null);
+
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                setNotification({ type: 'success', message: data.message || 'Message sent successfully!' });
+                // Clear form
+                setFormData({
+                    name: '',
+                    email: '',
+                    phone: '',
+                    subject: '',
+                    message: ''
+                });
+            } else {
+                setNotification({ type: 'error', message: data.error || 'Failed to send message. Please try again.' });
+            }
+        } catch (error) {
+            setNotification({ type: 'error', message: 'Network error. Please check your connection and try again.' });
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
     return (
         <section id="contact" className="py-5">
             <div className="container">
@@ -78,14 +131,26 @@ export default function Contact() {
                     <div className="col-lg-6">
                         <div className="glass-card p-4 p-md-5">
                             <h3 className="mb-4">Send Us a Message</h3>
-                            <form>
+
+                            {notification && (
+                                <div className={`alert ${notification.type === 'success' ? 'alert-success' : 'alert-danger'} d-flex align-items-center mb-4`} role="alert">
+                                    <i className={`${notification.type === 'success' ? 'ri-checkbox-circle-line' : 'ri-error-warning-line'} me-2`} style={{ fontSize: '1.5rem' }}></i>
+                                    <div>{notification.message}</div>
+                                </div>
+                            )}
+
+                            <form onSubmit={handleSubmit}>
                                 <div className="mb-3">
                                     <label htmlFor="name" className="form-label">Your Name</label>
                                     <input
                                         type="text"
                                         className="form-control bg-dark-lighter border-0 text-white"
                                         id="name"
+                                        name="name"
+                                        value={formData.name}
+                                        onChange={handleChange}
                                         placeholder="John Doe"
+                                        required
                                     />
                                 </div>
                                 <div className="mb-3">
@@ -94,22 +159,35 @@ export default function Contact() {
                                         type="email"
                                         className="form-control bg-dark-lighter border-0 text-white"
                                         id="email"
+                                        name="email"
+                                        value={formData.email}
+                                        onChange={handleChange}
                                         placeholder="john@example.com"
+                                        required
                                     />
                                 </div>
-                                <div className="md-3">
+                                <div className="mb-3">
                                     <label htmlFor="phone" className="form-label">Phone Number</label>
                                     <input
                                         type="tel"
                                         className="form-control bg-dark-lighter border-0 text-white"
                                         id="phone"
                                         name="phone"
+                                        value={formData.phone}
+                                        onChange={handleChange}
                                         placeholder="+1 (234) 567-890"
                                     />
                                 </div>
                                 <div className="mb-3">
                                     <label htmlFor="subject" className="form-label">Subject</label>
-                                    <select className="form-select bg-dark-lighter border-0 text-white" id="subject">
+                                    <select
+                                        className="form-select bg-dark-lighter border-0 text-white"
+                                        id="subject"
+                                        name="subject"
+                                        value={formData.subject}
+                                        onChange={handleChange}
+                                        required
+                                    >
                                         {contactInfo.messageSubjects.map((subject, index) => (
                                             <option key={index} value={subject.value}>
                                                 {subject.label}
@@ -122,13 +200,26 @@ export default function Contact() {
                                     <textarea
                                         className="form-control bg-dark-lighter border-0 text-white"
                                         id="message"
+                                        name="message"
+                                        value={formData.message}
+                                        onChange={handleChange}
                                         rows={4}
                                         placeholder="Tell us about your project..."
+                                        required
                                     ></textarea>
                                 </div>
-                                <button type="submit" className="btn btn-primary-custom w-100">
-                                    <i className="ri-send-plane-fill me-2"></i>
-                                    Send Message
+                                <button type="submit" className="btn btn-primary-custom w-100" disabled={isSubmitting}>
+                                    {isSubmitting ? (
+                                        <>
+                                            <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                                            Sending...
+                                        </>
+                                    ) : (
+                                        <>
+                                            <i className="ri-send-plane-fill me-2"></i>
+                                            Send Message
+                                        </>
+                                    )}
                                 </button>
                             </form>
                         </div>
