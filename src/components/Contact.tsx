@@ -1,5 +1,8 @@
 "use client";
 
+
+import contactInfo from '@/data/contact.json';
+
 export default function Contact() {
     return (
         <section id="contact" className="py-5">
@@ -22,8 +25,8 @@ export default function Contact() {
                                 <div>
                                     <h5 className="mb-1">Email Us</h5>
                                     <p className="mb-0" style={{ color: 'var(--text-gray)' }}>
-                                        <a href="mailto:info@ktechsolutions.com" className="text-decoration-none" style={{ color: 'var(--primary-light)' }}>
-                                            info@ktechsolutions.com
+                                        <a href={`mailto:${contactInfo.email}`} className="text-decoration-none" style={{ color: 'var(--primary-light)' }}>
+                                            {contactInfo.email}
                                         </a>
                                     </p>
                                 </div>
@@ -36,8 +39,8 @@ export default function Contact() {
                                 <div>
                                     <h5 className="mb-1">Call Us</h5>
                                     <p className="mb-0" style={{ color: 'var(--text-gray)' }}>
-                                        <a href="tel:+1234567890" className="text-decoration-none" style={{ color: 'var(--primary-light)' }}>
-                                            +1 (234) 567-890
+                                        <a href={`tel:${contactInfo.phone}`} className="text-decoration-none" style={{ color: 'var(--primary-light)' }}>
+                                            {contactInfo.phone}
                                         </a>
                                     </p>
                                 </div>
@@ -50,23 +53,23 @@ export default function Contact() {
                                 <div>
                                     <h5 className="mb-1">Visit Us</h5>
                                     <p className="mb-0" style={{ color: 'var(--text-gray)' }}>
-                                        123 Tech Street, Digital City
+                                        {contactInfo.address}
                                     </p>
                                 </div>
                             </div>
                         </div>
 
                         <div className="d-flex gap-3">
-                            <a href="#" className="btn btn-outline-custom">
+                            <a href={contactInfo.social.facebook} className="btn btn-outline-custom">
                                 <i className="ri-facebook-fill"></i>
                             </a>
-                            <a href="#" className="btn btn-outline-custom">
+                            <a href={contactInfo.social.twitter} className="btn btn-outline-custom">
                                 <i className="ri-twitter-x-line"></i>
                             </a>
-                            <a href="#" className="btn btn-outline-custom">
+                            <a href={contactInfo.social.linkedin} className="btn btn-outline-custom">
                                 <i className="ri-linkedin-fill"></i>
                             </a>
-                            <a href="#" className="btn btn-outline-custom">
+                            <a href={contactInfo.social.github} className="btn btn-outline-custom">
                                 <i className="ri-github-fill"></i>
                             </a>
                         </div>

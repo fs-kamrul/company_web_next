@@ -1,5 +1,8 @@
 "use client";
 
+
+import contactInfo from '@/data/contact.json';
+
 export default function Footer() {
     const currentYear = new Date().getFullYear();
 
@@ -17,16 +20,16 @@ export default function Footer() {
                             Your trusted partner in digital transformation.
                         </p>
                         <div className="d-flex gap-2 mt-3">
-                            <a href="#" className="btn btn-sm btn-outline-custom">
+                            <a href={contactInfo.social.facebook} className="btn btn-sm btn-outline-custom">
                                 <i className="ri-facebook-fill"></i>
                             </a>
-                            <a href="#" className="btn btn-sm btn-outline-custom">
+                            <a href={contactInfo.social.twitter} className="btn btn-sm btn-outline-custom">
                                 <i className="ri-twitter-x-line"></i>
                             </a>
-                            <a href="#" className="btn btn-sm btn-outline-custom">
+                            <a href={contactInfo.social.linkedin} className="btn btn-sm btn-outline-custom">
                                 <i className="ri-linkedin-fill"></i>
                             </a>
-                            <a href="#" className="btn btn-sm btn-outline-custom">
+                            <a href={contactInfo.social.github} className="btn btn-sm btn-outline-custom">
                                 <i className="ri-github-fill"></i>
                             </a>
                         </div>
@@ -69,19 +72,19 @@ export default function Footer() {
                         <ul className="list-unstyled">
                             <li className="mb-2">
                                 <i className="ri-mail-line me-2" style={{ color: 'var(--primary-color)' }}></i>
-                                <a href="mailto:info@ktechsolutions.com" style={{ color: 'var(--text-gray)' }}>
-                                    info@ktechsolutions.com
+                                <a href={`mailto:${contactInfo.email}`} style={{ color: 'var(--text-gray)' }}>
+                                    {contactInfo.email}
                                 </a>
                             </li>
                             <li className="mb-2">
                                 <i className="ri-phone-line me-2" style={{ color: 'var(--primary-color)' }}></i>
-                                <a href="tel:+1234567890" style={{ color: 'var(--text-gray)' }}>
-                                    +1 (234) 567-890
+                                <a href={`tel:${contactInfo.phone}`} style={{ color: 'var(--text-gray)' }}>
+                                    {contactInfo.phone}
                                 </a>
                             </li>
                             <li className="mb-2">
                                 <i className="ri-map-pin-line me-2" style={{ color: 'var(--primary-color)' }}></i>
-                                <span style={{ color: 'var(--text-gray)' }}>123 Tech Street, Digital City</span>
+                                <span style={{ color: 'var(--text-gray)' }}>{contactInfo.address}</span>
                             </li>
                         </ul>
                     </div>

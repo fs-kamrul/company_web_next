@@ -3,6 +3,7 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { useState } from 'react';
+import contactInfo from '@/data/contact.json';
 
 export default function ContactPage() {
     const [formData, setFormData] = useState({
@@ -67,8 +68,8 @@ export default function ContactPage() {
                                             <div>
                                                 <h5 className="mb-2">Email Us</h5>
                                                 <p className="mb-1" style={{ color: 'var(--text-gray)' }}>
-                                                    <a href="mailto:info@ktechsolutions.com" className="text-decoration-none" style={{ color: 'var(--primary-light)' }}>
-                                                        info@ktechsolutions.com
+                                                    <a href={`mailto:${contactInfo.email}`} className="text-decoration-none" style={{ color: 'var(--primary-light)' }}>
+                                                        {contactInfo.email}
                                                     </a>
                                                 </p>
                                                 <p className="mb-0 small" style={{ color: 'var(--text-gray)' }}>
@@ -86,8 +87,8 @@ export default function ContactPage() {
                                             <div>
                                                 <h5 className="mb-2">Call Us</h5>
                                                 <p className="mb-1" style={{ color: 'var(--text-gray)' }}>
-                                                    <a href="tel:+1234567890" className="text-decoration-none" style={{ color: 'var(--primary-light)' }}>
-                                                        +1 (234) 567-890
+                                                    <a href={`tel:${contactInfo.phone}`} className="text-decoration-none" style={{ color: 'var(--primary-light)' }}>
+                                                        {contactInfo.phone}
                                                     </a>
                                                 </p>
                                                 <p className="mb-0 small" style={{ color: 'var(--text-gray)' }}>
@@ -105,7 +106,7 @@ export default function ContactPage() {
                                             <div>
                                                 <h5 className="mb-2">Visit Us</h5>
                                                 <p className="mb-1" style={{ color: 'var(--text-gray)' }}>
-                                                    123 Tech Street, Digital City
+                                                    {contactInfo.address}
                                                 </p>
                                                 <p className="mb-0 small" style={{ color: 'var(--text-gray)' }}>
                                                     Office hours: 9am - 6pm
@@ -135,19 +136,19 @@ export default function ContactPage() {
                                 <div className="mt-4">
                                     <h5 className="mb-3">Follow Us</h5>
                                     <div className="d-flex gap-3">
-                                        <a href="#" className="btn btn-outline-custom">
+                                        <a href={contactInfo.social.facebook} className="btn btn-outline-custom">
                                             <i className="ri-facebook-fill"></i>
                                         </a>
-                                        <a href="#" className="btn btn-outline-custom">
+                                        <a href={contactInfo.social.twitter} className="btn btn-outline-custom">
                                             <i className="ri-twitter-x-line"></i>
                                         </a>
-                                        <a href="#" className="btn btn-outline-custom">
+                                        <a href={contactInfo.social.linkedin} className="btn btn-outline-custom">
                                             <i className="ri-linkedin-fill"></i>
                                         </a>
-                                        <a href="#" className="btn btn-outline-custom">
+                                        <a href={contactInfo.social.github} className="btn btn-outline-custom">
                                             <i className="ri-github-fill"></i>
                                         </a>
-                                        <a href="#" className="btn btn-outline-custom">
+                                        <a href={contactInfo.social.instagram} className="btn btn-outline-custom">
                                             <i className="ri-instagram-line"></i>
                                         </a>
                                     </div>

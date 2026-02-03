@@ -2,6 +2,7 @@
 
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import contactInfo from '@/data/contact.json';
 
 export default function PrivacyPolicy() {
     return (
@@ -61,8 +62,8 @@ export default function PrivacyPolicy() {
                                         If you have any questions about this privacy policy or our privacy practices, please contact us at:
                                     </p>
                                     <p className="mb-0">
-                                        <strong>Email:</strong> info@ktechsolutions.com<br />
-                                        <strong>Address:</strong> 123 Tech Street, Digital City
+                                        <strong>Email:</strong> {contactInfo.email}<br />
+                                        <strong>Address:</strong> {contactInfo.address}
                                     </p>
                                 </section>
                             </div>
